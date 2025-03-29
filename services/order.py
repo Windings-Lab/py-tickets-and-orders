@@ -12,12 +12,11 @@ def create_order(
         date: str | None = None,
 ) -> None:
     with transaction.atomic():
-        order = Order(
+        order = Order.objects.create(
             user=User.objects.get(username=username),
+            created_at=date
         )
-        order.save()
         if date:
-            date = date.replace(" ", "T")
             order.created_at = datetime.fromisoformat(date)
             order.save()
 
