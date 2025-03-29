@@ -29,7 +29,7 @@ def create_order(
             ticket.save()
 
 
-def get_orders(username: str | None = None) -> QuerySet:
+def get_orders(username: str | None = None) -> QuerySet[Order]:
     query = Order.objects.all()
     if username:
         query = query.filter(user__username=username)
