@@ -18,7 +18,7 @@ def create_order(
         )
         if date:
             order.created_at = datetime.fromisoformat(date)
-            order.save()
+            order.save(update_fields=['created_at'])
 
         for ticket_dict in tickets:
             ticket_dict["movie_session_id"] = ticket_dict["movie_session"]
